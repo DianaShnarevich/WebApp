@@ -21,17 +21,16 @@ public class ListGenreServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
 
-        try (PrintWriter writer = resp.getWriter()) {
-            writer.write("<html><h1>Rock<br>" +
-                    "Pop<br>" +
-                    "Jazz<br>" +
-                    "Hip-hopz<br>" +
-                    "Opera<br>" +
-                    "Classical<br>" +
-                    "Reggae<br>" +
-                    "Rap<br>" +
-                    "Folk<br>" +
-                    "Alternative</h1></html>");
-        }
+        PrintWriter writer = resp.getWriter();
+        writer.write("<html><h1>Rock<br>" +
+                "Pop<br>" +
+                "Jazz<br>" +
+                "Hip-hopz<br>" +
+                "Opera<br>" +
+                "Classical<br>" +
+                "Reggae<br>" +
+                "Rap<br>" +
+                "Folk<br>" +
+                "Alternative</h1></html>");
     }
 }

@@ -23,9 +23,8 @@ public class VoteServlet extends HttpServlet {
         boolean isCorrectVoice = voiceController.vote(req);
         String message = voiceController.getResult(isCorrectVoice);
 
-        try (PrintWriter writer = resp.getWriter()) {
-            writer.write(message);
-        }
+        PrintWriter writer = resp.getWriter();
+        writer.write(message);
     }
 
     @Override

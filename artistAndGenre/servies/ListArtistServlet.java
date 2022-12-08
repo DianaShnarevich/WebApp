@@ -17,11 +17,10 @@ public class ListArtistServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
 
-        try (PrintWriter writer = resp.getWriter()) {
-            writer.write("<html><h2>Get Scared<br>" +
+        PrintWriter writer = resp.getWriter();
+        writer.write("<html><h2>Get Scared<br>" +
                     "Metallica<br>" +
                     "Three Days Grace<br>" +
                     "Korol i Shut</h2></html>");
-        }
     }
 }

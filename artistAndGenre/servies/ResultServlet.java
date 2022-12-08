@@ -20,9 +20,8 @@ public class ResultServlet extends HttpServlet {
         VoiceController voiceController = VoiceController.getInstance();
         String message = voiceController.getResult(true);
 
-        try (PrintWriter writer = resp.getWriter()) {
-            writer.write(message);
-        }
+        PrintWriter writer = resp.getWriter();
+        writer.write(message);
     }
 
     @Override

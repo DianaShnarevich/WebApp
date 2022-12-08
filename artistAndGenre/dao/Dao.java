@@ -14,7 +14,7 @@ public class Dao implements IDao {
         try (Stream<String> line = Files.lines(Paths.get(URL), StandardCharsets.UTF_8)) {
             return line.collect(Collectors.joining("\n"));
         } catch (IOException e) {
-            throw new FileNotFoundException(URL + " not found");
+            throw new FileNotFoundException(URL);
         }
     }
 }

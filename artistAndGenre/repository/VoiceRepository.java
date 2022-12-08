@@ -27,11 +27,11 @@ public class VoiceRepository implements IVoiceRepository {
 
     @Override
     public boolean vote(HttpServletRequest req) {
-        boolean isCorrectVoice = checkCorrectnessVoice(req);
-        if (isCorrectVoice) {
-            updateActors(req);
-            updateGenres(req);
-            updateTexts(req);
+        boolean voice = checkVoice(req);
+        if (voice) {
+            artistUpdate(req);
+            genreUpdate(req);
+            aboutUpdate(req);
             return true;
         } else {
             return false;
@@ -49,7 +49,7 @@ public class VoiceRepository implements IVoiceRepository {
         }
     }
 
-    private boolean checkCorrectnessVoice(HttpServletRequest req) {
+    private boolean checkVoice(HttpServletRequest req) {
         String[] genres = req.getParameterValues("genre");
         if (genres == null || genres.length < 3 || genres.length > 5) {
             return false;
@@ -58,19 +58,19 @@ public class VoiceRepository implements IVoiceRepository {
         return artist != null && actors.length <= 1;
     }
 
-    private void updateActors(HttpServletRequest req) {
+    private void artistUpdate(HttpServletRequest req) {
         String artists = req.getParameter("artist");
         artist.merge(artists, 1, (oldValue, newValue) -> oldValue + 1);
     }
 
-    private void updateGenres(HttpServletRequest req) {
+    private void genreUpdate(HttpServletRequest req) {
         String[] genres = req.getParameterValues("genre");
         Arrays.stream(genres)
                 .forEach(genre -> this.genre.merge(
                         genre, 1, (oldValue, newValue) -> oldValue + 1));
     }
 
-    private void updateTexts(HttpServletRequest req) {
+    private void aboutUpdate(HttpServletRequest req) {
         DateTimeFormatter formatter = DateTimeFormatter
                 .ofPattern("yyyy.MM.dd   HH:mm:ss:SSS");
         String dateTimeNow = formatter.format(LocalDateTime.now());

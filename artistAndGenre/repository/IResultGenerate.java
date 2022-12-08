@@ -1,5 +1,5 @@
 package web.artistAndGenre.repository;
 
 public interface IResultGenerate {
-    String generateResult(boolean isCorrectVoice);
+    String generateResult(boolean vote);
 }

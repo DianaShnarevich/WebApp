@@ -15,7 +15,7 @@ public class ResultGenerate implements IResultGenerate {
     private String createMessage() {
         StringBuilder builder = new StringBuilder();
 
-        builder.append("<h2> Лучший сполнитель : </h2>");
+        builder.append("<h2> Лучший исполнитель : </h2>");
         VoiceController.getInstance().getVoiceRepository().getArtist().entrySet().stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .forEach(entry -> builder.append("<p>").append(entry).append("</p>"));
@@ -24,7 +24,7 @@ public class ResultGenerate implements IResultGenerate {
         VoiceController.getInstance().getVoiceRepository().getGenre().entrySet().stream().
                 sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .forEach(entry -> builder.append("<p>").append(entry).append("</p>"));
-        builder.append("<h2>Краткий текст о вас: </h2>");
+        builder.append("<h2>Краткая информация о голосовании: </h2>");
 
         VoiceController.getInstance().getVoiceRepository().getText().entrySet().stream()
                 .sorted(Map.Entry.<String, String>comparingByKey().reversed())
